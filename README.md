@@ -43,9 +43,66 @@ switch (<비교할 값>) {
         <문장>
         break;
 }
-```
+``` 
 -- break : 조건문,반복문을 빠져나갈때 사용
-- 삼항 연산자
+- 삼항 연산자 : 조건을 구분 ( 해당 변수가 undefined인지 확인할 때 )
+```javsscript
+<불 표현식> ? <참> : 거짓
+```
+- 짧은 초기화 조건문 : || 연산자 활용
+-- A || B 에서 A가 참이라면 A로 대치<br>
+-- A || B 에서 A가 거짓이라면 B로 대치
+- ex)
+```javascript
+let test;
+
+test = test || "초기화합니다_1"
+console.log(test);
+
+test = test || "초기화합니다_2"
+console.log(test);
+```
+-- 결과 : 초기화합니다_1 (2번나옴)<br>
+-- 변수가 test가 undefined일 때 || 기호 뒤의 값으로 초기화한다<br>
+-- && 연산자는 반대로 동작, 짧은 초기화 조건문으로는 거의 활용x
+- 배열 : 여러 개의 자료를 한꺼번에 다룰 수 있는 자료형
+> let 이름 = [자료, 자료, 자료, 자료, 자료]
+-- 요소 (element) : 배열 안에 들어 있는 각 자료<br>
+-- 인덱스 (index) : 대괄호 안에 넣는 숫자<br>
+-- .length 배열에 몇 개의 요소가 있는지 확인
+- while 반복문
+```javascript
+while (<불 표현식>) {
+    // 불 표현식이 참인 동안 실행할 문장
+}
+```
+- 무한 반복문 (무한루프)
+```javascript
+while (true) {
+    console.log("무한 반복");
+}
+```
+- for 반복문 : 원하는 횟수만큼 반복하고 싶을때 사용
+```javascript
+for (let i = 0; i < <반복 횟수>; i++) {
+
+}
+```
+- 역 for 반복문 : 배열 반복을 뒤에서부터 실행 해야 할 떄 사용
+```javascript
+for (let i = length -1; i >= 0; i--){
+
+}
+```
+- for in 반복문, for of 반복문 : 객체에 쉽게 반복문을 적용할때 사용
+```javascript
+for (let 인덱스 in 배열) {
+
+}
+for (let 요소 of 배열) {
+    
+}
+```
 ***
 ## [3월 23일]
 ***
