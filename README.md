@@ -1,4 +1,74 @@
 # 박수정 [202030311]
+## [4월 27일]
+***
+## 내용 요약
+- 객체 : 여러 개의 자료형을 한 번에 저장하는 자료형
+-- 배열과 객체는 상당히 유사 <br>
+-- 배열은 요소에 접근할때 인덱스를 사용 하지만 객체는 키를 사용<br>
+```javascript
+let product = {
+    제품명: '70 건조 망고',
+    유형: '당절임'
+}
+
+product['제품명']
+product['당절임']
+product.제품명
+```
+- 객체 뒤에 대괄호를 사용해 키를 입력하면 객체의 속성에 접근 혹은 3번째 방법처럼 깔끔하게 사용
+- 반복문 : for in 키 로 사용한다.
+- 속성 : 객체 내부에 있는 값 하나하나
+- 메소드 : 객체 속성 중 자료형이 함수인 속성
+```javascript
+let object = {
+    name: '바나나',
+    price: 1200,
+    print: function () {
+        console.log(`${this.name}의 가격은 ${this.price}원입니다`)
+    }
+}
+```
+-- print 속성은 자료형이 함수여서 메소드라고함.<br>
+-- 자신의 가지고있는 속성이라는 것을 표시할 때 this 키워드 사용<br>
+-- 화살표 함수를 사용해 메소드를 만들면 undefined가 나옴
+```javascript
+let products = [
+    { name: '바나나', price: 1200 },
+    { name: '사과', price: 2000 },
+    { name: '배', price: 3000 },
+    { name: '고구마', price: 700 },
+    { name: '감자', price: 600 },
+    { name: '수박', price: 5000 }
+];
+```
+- 객체 형태로 데이터로 표현하는 것 -> JSON 
+(Javascript Object Notation)
+```javascript
+let products = [{
+    name: '바나나',
+    price: 1200,
+    print: function () {
+        console.log(`${this.name}의 가격은 ${this.price}원입니다.`)
+    } 
+}];
+```
+- 메소드를 가진 객체배열
+- 함수와 객체를 따로 적으면 안되나? -> 한 객체의 속성과 기능은 한 객체를 기준으로 처리할 수 있게한다라는 규칙성을 가지기 때문에 되도록이면 위에 처럼 만든다.
+- 생성자 함수 : 객체를 만드는 함수
+-- 대문자로 시작하는 이름을 사용
+```javascript
+// 생성자함수
+function Product(name, price) {
+    this.name = name;
+    this.price = price;
+}
+// 객체 생성
+let product = new Product("바나나", 1200);
+```
+- new 키워드와 함께 객체를 생성
+- 간단하게 생성한 객체에는 이름이 없었는데 이러한 객체는 익명객체 라고 함
+- new 키워드를 앞에 붙이지 않으면 일반 함수 호출
+***
 ## [4월 13일]
 ***
 ## 내용 요약
