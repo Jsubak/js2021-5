@@ -1,4 +1,73 @@
 # 박수정 [202030311]
+## [5월 4일]
+***
+## 내용 요약
+- 프로토 타입 (prototype) : 모든 함수가 가지고 있는 속성으로 해당 함수를 생성자함수로 사용했을때만 의미있음.
+```javascript
+// 생성자 함수
+function Product(name, price) {
+    this.name = name;
+    this.price = price;
+}
+
+// 프로토타입에 메소드를 선언합니다.
+Product.prototype.print = function () {
+    console.log(`${product.name}의 가격은 ${product.price}원 입니다.`);
+};
+
+// 객체를 생성합니다.
+let product = new Product("바나나", 1200);
+
+// 메소드를 호출합니다.
+product.print();
+```
+- null :변수처럼 활용, null값을 가진 객체(object) <br>
+-- undefined 상태를 인위적으로 만듦, 아예 값이 없는 상태 구분할 때
+- 숫자, 문자열, 불은 typeof를 사용하면 object가 나옴 즉, 객체라는 의미
+- 기본자료형과 객체 자료형 모두 속성과 메소드를 사용할 수 있음
+-- 기본 자료형의 속성 또는 메소드를 사용할 떄 기본 자료형이 자동으로 객체로 변환
+- Number 객체는 기본 자료형과 객체 자료형 모두를 의미
+```javascript
+let numberFromLiteral = 273;
+let numberFromConstructor = new Number(273);
+```
+- Number 메소드
+
+| 메소드 | 설명 |
+|:----:|:----:|
+| toExponential() | 숫자 -> 지수 표시로 나타낸 문자열 |
+| toFixed() | 숫자 -> 고정소수점 표시로 나타낸 문자열 |
+| toPrecision() | 숫자 -> 지수 또는 고정소수점표시로 나타낸 문자열 |
+
+-- Number 생성자 함수에도 속성이 있다.
+
+| 속성 | 설명 |
+|:----:|:----:|
+| MAX_VALUE | 숫자가 나타낼 수 있는 최대 숫자 |
+| MIN_VALUE | 숫자가 나타낼 수 있는 최소 숫자 |
+| NaN | 숫자로 나타낼 수 없는 숫자 |
+| POSITIVE_INFINITY | 양의 무한대 숫자 |
+| NEGATIVE_INFINITY | 음의 무한대 숫자 |
+
+- string 객체
+```javascript
+let stringFromLiteral = '안녕하세요';
+let stringFromConstructor = new String('안녕하세요');
+```
+- 속성
+-- length : 문자열 길이
+
+| 속성 | 설명 |
+|:----:|:----:|
+| charAt(position) | position에 위치하는 문자 |
+| charCodeAt(position) | positon에 위치하는 유니코드 번호
+| concat(args) | 매개 변수로 입력한 문자열 |
+| indexOf(searchString, position) | 앞에서부터 일치하는 문자열의 위치 |
+| lastindexOf(searchString, position) | 뒤에서부터 일치하는 문자열 위치 |
+... 등등
+
+- 자기자신을 변경하는게 아니라 변경된 값을 리턴하는 것
+***
 ## [4월 27일]
 ***
 ## 내용 요약
