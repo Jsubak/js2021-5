@@ -24,7 +24,7 @@ product.print();
 - null :변수처럼 활용, null값을 가진 객체(object) <br>
 -- undefined 상태를 인위적으로 만듦, 아예 값이 없는 상태 구분할 때
 - 숫자, 문자열, 불은 typeof를 사용하면 object가 나옴 즉, 객체라는 의미
-- 기본자료형과 객체 자료형 모두 속성과 메소드를 사용할 수 있음
+- 기본자료형과 객체 자료형 모두 속성과 메소드를 사용할 수 있음 <br>
 -- 기본 자료형의 속성 또는 메소드를 사용할 떄 기본 자료형이 자동으로 객체로 변환
 - Number 객체는 기본 자료형과 객체 자료형 모두를 의미
 ```javascript
@@ -54,7 +54,7 @@ let numberFromConstructor = new Number(273);
 let stringFromLiteral = '안녕하세요';
 let stringFromConstructor = new String('안녕하세요');
 ```
-- 속성
+- 속성 <br>
 -- length : 문자열 길이
 
 | 속성 | 설명 |
@@ -64,8 +64,8 @@ let stringFromConstructor = new String('안녕하세요');
 | concat(args) | 매개 변수로 입력한 문자열 |
 | indexOf(searchString, position) | 앞에서부터 일치하는 문자열의 위치 |
 | lastindexOf(searchString, position) | 뒤에서부터 일치하는 문자열 위치 |
-... 등등
 
+... 등등
 - 자기자신을 변경하는게 아니라 변경된 값을 리턴하는 것
 ***
 ## [4월 27일]
