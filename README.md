@@ -89,7 +89,7 @@ String prototype.contain = function (input) {
 
 >예외처리
 >> 예외 : 실행에 문제가 발생하면 자동 중단
->>예외 처리 : 오류에 대처할 수 있게 하는 것
+>> 예외 처리 : 오류에 대처할 수 있게 하는 것
 
 - try catch finally 수문
 ```javascript
