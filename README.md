@@ -5,10 +5,13 @@
 - Date 객체생성
 ```javascript
 // 현재 시간을 기반으로 Date 객체를 생성
+
 let dateA = new Date();
 // 유닉스 타임(1970년 1월 1일 00시 00분 00초부터 경과한 밀리초)
+
 let dateB = new Date(692281800000);
 // 문자열을 기반으로 Date 객체를 생성
+
 let dateC = new Date("December 9, 1991 21:30:00");
 ```
 - 메소드 <br>
@@ -100,9 +103,9 @@ try {
 ```
 - catch 혹은 finally 구문 생략가능
 - 예외 강제 발생 <br>
--- throw 키워드 사용
+-- throw 키워드 사용 <br>
 -- throw 키워드 뒤에는 문자열 또는 Error 객체 입력
-- throw '강제 예외';
+<pre>throw '강제 예외'; </pre>
 ***
 ## [5월 4일]
 ***
