@@ -5,13 +5,12 @@
 - Date 객체생성
 ```javascript
 // 현재 시간을 기반으로 Date 객체를 생성
-
 let dateA = new Date();
+
 // 유닉스 타임(1970년 1월 1일 00시 00분 00초부터 경과한 밀리초)
-
 let dateB = new Date(692281800000);
-// 문자열을 기반으로 Date 객체를 생성
 
+// 문자열을 기반으로 Date 객체를 생성
 let dateC = new Date("December 9, 1991 21:30:00");
 ```
 - 메소드 <br>
@@ -88,8 +87,8 @@ String prototype.contain = function (input) {
 | JSON.parse(<문자열>) | 문자열을 자바스크립트 객체로 파싱 (객체 리턴) |
 
 >예외처리
->> 예외 : 실행에 문제가 발생하면 자동 중단
->> 예외 처리 : 오류에 대처할 수 있게 하는 것
+>> 예외 : 실행에 문제가 발생하면 자동 중단 <br>
+ 예외 처리 : 오류에 대처할 수 있게 하는 것
 
 - try catch finally 수문
 ```javascript
