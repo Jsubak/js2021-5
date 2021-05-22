@@ -1,4 +1,136 @@
 # 박수정 [202030311]
+## [5월 18일]
+***
+## 내용 요약
+- Node.js
+- 전역 변수, 전역 함수, 전역 객체 : 모든 곳에서 사용할 수 있는 것들
+
+| 변수 | 설명 |
+|:----:|:----:|
+| __filename | 현재 실행 중인 코드 파일 경로 |
+| __dimame | 현재 실행 중인 코드의 폴더 경로 |
+
+- process에 전역 객체를 제공
+- process 객체는 프로세스 정보 제공 + 제어 기능
+
+| 속성 | 설명 |
+|:----:|:----:|
+| env | 컴퓨터 환경 정보 |
+| version | Node.js 버전 |
+| versions | Node.js와 종속된 프로그램 버전 |
+| arch | 프로세서의 아키텍처 |
+| platform | 플랫폼 |
+
+| 메소드 | 설명 |
+|:----:|:----:|
+| exit([exitCode = 0]) | 프로그램 종료 |
+| memoryUsage() | 메모리 사용 정보 객체 |
+| uptime() | 현재 프로그램이 실행된 시간 |
+```javascript
+// process 객체의 속성과 메소드를 사용
+console.log('- process.arch:', process.arch );
+```
+- Node.js의 이벤트 연결 메소드
+
+| 메소드 | 설명 |
+|:----:|:----:|
+| on(<이벤트 이름>,<이벤트 핸들러>) | 이벤트 연결 |
+
+| 이벤트 | 설명 |
+|:----:|:----:|
+| exit | 프로세스 종료될 때 발생 |
+| uncaughtException | 프로세스 종료될 때 발생 |
+
+```javascript
+// 이런식으로 연결
+process.on('exit', () => {
+    console.log('프로세스 종료');
+});
+```
+- 이벤트 매개 변수 : 이벤트 핸들러의 매개 변수로 전달되는 매개 변수
+```javascript
+process.on('exit', (code) => {
+    console.log(`About to exit with code: ${code}`);
+});
+```
+- os 모듈 사용
+```javascript
+const os = require('os');
+
+// 모듈을 추출
+const OS = require('OS');
+```
+
+| 메소드 | 설명 |
+|:----:|:----:|
+| hostname() | 운영체제의 호스트 이름 |
+| type() | 운영체제의 이름 |
+| platform() | 운영체제의 플랫폼 |
+| arch() | 운영체제의 아키텍처 |
+| release() | 운영체제의 버전 |
+| uptime() | 운영체제가 실행된 시간 |
+| loadavg() | 로드 에버리지 정보를 담은 배열 |
+| totalmem() | 시스템의 총 메모리 |
+| freemem() | 시스템의 사용 가능한 메모리 |
+| cups() | CPU의 정보를 담은 객체 |
+| getNetworkInterfaces() | 네트워크 인터페이스의 정보를 담은 배열 |
+
+- url 모듈
+```javascript
+const url = require('url');
+```
+| 메소드 | 설명 |
+|:----:|:----:|
+| parse(urlStr,[.parseQueryString = false, slashesDenoteHost = false]) | URL문자열을 URL객체로 변환 |
+| format(urlObj) | URL객체를 URL문자열로 변환 |
+| resolve(from, to) | 매겨 변수를 조합하여 완전한 URL문자열을 생성 |
+
+- File System
+```javascript
+const fs = require('fs');
+```
+- 파일읽기
+
+| 메소드 | 설명 |
+|:----:|:----:|
+| fs.readFileSync(<파일 이름>) | 동기적으로 파일을 읽어드림 |
+| fs.readFile(<파일 이름>,<콜백 함수>) | 비동기적으로 파일을 읽어드림 |
+
+- 동기 : 메소드 뒤에 Sync문자가 붙음,코드 순서대로 실행
+- 비동기 : Node.js가 제공하는 메소드 대부분, 빠른코드를 쉽게 만듬 <br>
+-- 비동기 처리의 장점 <br>
+-- 개발 속도와 유지 보수성이 좋은 프로그래밍 언어를 사용
+C++, 자바 보다 느리지만 Node.js를 사용하면 손쉽게 비동기 처리 구현 -> 빠른 처리가능 <br>
+- 파일 쓰기
+
+| 메소드 | 설명 |
+|:----:|:----:|
+| fs.writeFileSync(<파일 이름>, <문자열>) | 동기적으로 파일을 씀 |
+| fs.writeFile(<파일 이름>,<문자열>,<콜백 함수>) | 비동기적으로 파일을 씀 |
+
+- 파일 처리와 예외 처리 <br>
+-- 동기 코드 예외처리 : try catch 구문 <br>
+-- 비동기 코드 예외처리 : 콜백함수의 첫 번째 매개 변수 error를 활용 <br>
+
+```javascript
+const request = require('request');
+
+// request 모듈 사용
+const url = 'http://www.hanbit.co.kr/store/books/new_book_list.html';
+request(url, (error, response, body) => {
+    console.log(body);
+});
+```
+- 단순한 HTML 문자열, 여기에서 원하는 정보를 추출해야 단순한 데이터가 정보가 됨 -> 파싱
+- cheerio 모듈 : 가져온 웹 페이지의 특정 위치에서 손쉽게 데이터를 추출
+```javascript
+const cheerio = require('cheerio');
+```
+- async 모듈
+```javascript
+const async = require('async');
+```
+***
 ## [5월 11일]
 ***
 ## 내용 요약
