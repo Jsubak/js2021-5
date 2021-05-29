@@ -1,4 +1,170 @@
 # 박수정 [202030311]
+## [5월 25일]
+***
+## 내용 요약
+- 웹 서버를 만들 떄는 이것이 필요하고, Node.js를 도구로 활용
+- 웹 서버 : 요청과 응답의 요청
+- 요청하는 대상 : 클라이언트(사용자)
+- 응답하는 대상 : 서버(제공자)
+- 요청 메세지 : 클라이언트가 서버로 보내는 편지
+- 응답 메세지 : 서버가 클라이언트로 보내는 편지
+- express 모듈의 기본 메소드
+
+| 메소드 | 설명 |
+|:----:|:----:|
+| express() | 서버 어플리케이션 객체를 생성 |
+| app.use() | 요청이 왔을 때 실행할 함수를 지정 |
+| app.listen() | 서버를 실행 |
+
+```javascript
+// 모듈을 추출합니다.
+
+const express = require('express');
+
+// 서버를 생성
+
+onst app = express();
+
+// request 이벤트 리스너를 설정
+
+app.use((request, response) => {
+    response.send('<h1>Hello express</h1>');
+});
+
+// 서버를 실행
+
+app.listen(52273, () => {
+    console.log('Server running at http://127.0.0.1:52273');
+});
+```
+- 페이지 라우팅 : 클라이언트 요청에 적절한 페이지를 제공하는 기술
+
+- express 모듈의 페이지 라우팅 메소드
+
+| 메소드 | 설명 |
+|:----:|:----:|
+| get(path, callback) | GET 요청이 발생했을 때 이벤트 리스너를 지정 |
+| post(path, callback) | POST 요청이 발생했을 때 이벤트 리스너를 지정 |
+| pull(path, callback) | PUT 요청이 발생했을 때 이벤트 리스너를 지정 |
+| delete(path, callback) | DELETE 요청이 발생했을 때 이벤트 리스너를 지정 |
+| all(path, callback) | 모든 요청이 발생했을 때 이벤트 리스너를 지정 |
+
+- response 객체
+
+| 메소드 | 설명 |
+|:----:|:----:|
+| send() | 데이터 본문을 제공 |
+| status() | 상태 코드를 제공 |
+| set() | 헤더를 설정 |
+
+- send() 메소드 : 사용자에게 데이터 본문을 제공 <br>
+-- 가장 마지막에 실행해야 하며, 두 번 실행x
+```javascript
+// request 이벤트 리스너를 설정
+
+app.get('*', (request, response) => {
+    response.status(404);
+    response.set('methodA','ABCDE');
+    response.set({
+        'methodB1': 'FGHIJ',
+        'methodB2': 'KLMNO'
+    });
+});
+// set('문자얼','문자열') 또는 set(객체) 형태로 입력할 수 있다
+```
+- Content-Type <br>
+-- 서버가 Content-Type을 제공 : 웹 브라우저는 헤더를 확인, 제공된 데이터의 형태를 확인(MIME라는 문자열로 제공)
+
+| MINE 형식 | 설명 |
+|:----:|:----:|
+| text/plain | 기본적인 텍스트를 의미 |
+| text/html | html 데이터를 의미 |
+| image/png | png 데이터를 의미 |
+| audio/mpe | MP3 음악 파일을 의미 |
+| video/mpeg | MPEG 비디오 파일을 의미 |
+| application/json | json 데이터를 의미 |
+| multipart/form-data | 입력 양식 데이터를 의미 |
+
+- MIME 형식을 지정 : type() 메소드 사용
+
+| HTTP 상태 코드 | 설명 | 예 |
+|:----:|:----:|:----:|
+| 1XX | 처리 중 | 100 Continue |
+| 2XX | 성공 | 200 OK |
+| 3XX | 리다이렉트 | 300 Multple Choices |
+| 4XX | 클라이언트 오류 | 400 Bad Request |
+| 5XX | 서버 오류 | 500 Internal Server Error |
+
+- 상태 코드를 지정 : status () 메소드 사용
+- 리다이렉트 -> 특수한 상태 코드 <br>
+-- 웹 브라우저가 리다이렉트를 확인하면 화면을 출력x, 응답 헤더에 있는 Location 속성을 확인 -> 위치로 이동 <br>
+-- 특정 경로로 웹 브라우저를 인도 할 때 사용
+
+- redirect() : 리다이렉트
+
+- request 객체
+
+| 분류 | 값 | 설명 |
+|:----:|:----:|:----:|
+| 프로토콜 | HTTPS | 통신에 사용되는 규칙 |
+| 호스트 | (search.)naver.com | 애플리케이션 서버(또는 분산 장치 등)의 위치 |
+| URL | search.naver | 애플리케이션 서버 내부에서 라우트 위치 |
+| 요청 매개 변수 | ?where=nexearch &query=초콜릿 &sm=top_hty &fbm=0 &ie=utf8 | 추가적인 정보를 의미 |
+
+use() : 미들웨어를 설정
+
+- 정적 파일 제공
+- 웹 페이지에서 변경되지 않는 요소를 쉽게 제공
+- morgan 미들웨어 : 로그 출력 미들웨어
+- 로그 : 관련된 정보를 가진 글자
+- 로그 출력 미들웨어 : 웹 요청과 관련된 내용을 출력하는 미들웨어
+```javascript
+const app = express();
+app.use(express.static('public'));
+app.use(morgan('combined'));
+```
+- body-parser 미드웨어 : 요청 본문을 분석 <br>
+-- 클라이언트에서 서버로 데이터 전송
+- URL을 사용한 요청
+- 요청 본문 <br>
+-- 클라이언트가 서버로 본문을 전달할 때 요청 본문의 종류 함께 전달
+
+| MIME 형식 | 설명 |
+|:----:|:----:|
+| application/x-www-form-urlencoded | 웹 브라우저에서 입력 양식을 POST, PUT, DELETE 방식 등으로 전달할 때 사용하는 기본적인 요청 형식 |
+| application/json | JSON 데이터로 요청하는 방식 |
+| multipart/form-data | 대용량 파일을 전송할 때 사용하는 요청 방식 |
+
+- 속성 정리 : 클라이언트가 서버로 데이터를 전송하는 방법 <br>
+-- params 객체 : URL의 토큰 - 보기가 간편 <br>
+-- query 객체 : URL의 요청 매개 변수 - 토큰보다 많은 데이터를 전달할 수 있으며, 주소로 어떤 데이터가 오고 가는지 확인가능 <br>
+-- body 객체 : 대용량 문자열 등을 전송할 때 사용- 주소에 데이터를 기록하지 못하므로 새로고침이나 즐겨찾기 기능 등을 활용할 수 없음
+
+- REST 규정에 맞게 만든 ROA를 따르는 웹 서비스 디자인 표준
+
+| 메소드 | 컬렉션(배열) | 요소 |
+|:----:|:----:|:----:|
+|  | /collection | collection/id |
+| GET | 컬렉션을 조화 | 컬렉션의 특정 요소를 조회 |
+| POST | 컬렉션에 새로운 데이터 추가 | 사용 X |
+| PUT | 컬렉션에 전체를 한꺼번에 변겅 | 컬렉션에 특정 요소를 수정 |
+| DELETE | 컬렉션에 전체를 삭제 | 컬렉션에 특정 요소를 삭제 |
+
+- 사용자 관련 정보 (예시)
+- GET/user : 사용자 전체를 조회
+- GET/user/273 : 273번 사용자를 조회
+- POST/user : 사용자를 추가
+- DELETE/user/273 : 273번 사용자를 삭제
+
+| 메소드 | 경로 | 설명 |
+|:----:|:----:|:----:|
+| GET | /user | 모든 사용자 정보 조회 |
+| POST | /user | 사용자 추가 |
+| GET | /user/:id | 특정 사용자 정보 조회 |
+| PUT | /user/:id | 특정 사용자 정보 수정 |
+| DELETE | /user/:id | 특정 사용자 정보 제거 |
+
+***
 ## [5월 18일]
 ***
 ## 내용 요약
