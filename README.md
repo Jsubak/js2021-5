@@ -1,4 +1,257 @@
 # 박수정 [202030311]
+## [6월 1일]
+***
+## 내용요약
+### 웹 브라우저의 자바스크립트
+- let 키워드와 const 키워드
+
+| 최신 버전 자바스크립트 코드 | 인터넷 익스플로러에서 사용해야하는 코드 |
+|:----:|:----:|
+| let variable = 273; | var variableA = 273; |
+| const constant = "Hello World"; | var variable = "Hello World"; |
+
+- 템플릿 문자열
+
+| 최신 버전 자바스크립트 코드 | 인터넷 익스플로러에서 사용해야하는 코드 |
+|:----:|:----:|
+| let variable = 273;<br>console.log(`변수의 값은 ${variable}입니다.`); | var variableA = 273;<br>console.log('변수의 값은 '+variable+'입니다'); |
+
+- 화살표 함수
+
+| 최신 버전 자바스크립트 코드 | 인터넷 익스플로러에서 사용해야하는 코드 |
+|:----:|:----:|
+| const functionLiteral = () => { }; | var functionLiteral = function () { }; |
+| const constant = "Hello World"; | var variable = "Hello World"; |
+
+- for of 반복문
+
+| 최신 버전 자바스크립트 코드 | 인터넷 익스플로러에서 사용해야하는 코드 |
+|:----:|:----:|
+| const array = ['가','나','다'];<br>for (let item of array) { console.log(item); } | var array = ['가','나','다'];<br>for (var item in array) { console.log(array[i]); } |
+
+- 익스플로러는 forEach를 쓸 수 없어 자바 처럼 사용 <br>
+
+- 웹 브라우저와 관련된 객체
+- window 객체 : 웹 페이지 자체를 나타냄 <br>
+-- 화면 열고, 브라우저 크기 변경, 경고를 출력하는 경고창과 입력하는 프롬프트 제공
+
+| 함수 | 설명 |
+|:----:|:----:|
+| alert(<메세지>) | 경고창 출력 |
+| prompt(<메세지>, <임시 글자>) | 프롬프트 출력 |
+
+- screen 객체 속성
+
+| 속성 | 설명 |
+|:----:|:----:|
+| width | 화면의 너비 |
+| height | 화면의 높이 |
+| availWidth | 실제 화면에서 사용 가능한 너비 |
+| availHeight | 실제 화면에서 사용 가능한 높이 |
+| colorDepth | 사용 가능한 색상 수 |
+| pixelDepth | 한 픽셀당 비트 수 |
+
+- location 객체 속성
+
+| 속성 | 설명 | 예 |
+|:----:|:----:|:----:|
+| href | 문서 URL 주소 | |
+| host | 호스트 이름과 포트 번호 | localhost:52273 |
+| hostname | 호스트 이름 | localhost |
+| port | 포트 번호 | 52273 |
+| pathname | 디렉터리 경로 | /folder/HTMLPage.html |
+| hash | 앵커 이름(#~) | #test |
+| search | 요청 매개 변수 | ?param=10 |
+| protocol | 프로토콜 종류 | http: |
+
+- location 객체 메소드
+
+| 메소드 | 설명 |
+|:----:|:----:|
+| assign(<링크>) | 매개 변수로 전달한 위치로 이동 |
+| reload() | 새로고침 |
+| replace() | 매개 변수로 전달한 위치로 이동 (뒤로 가기 불가능) |
+
+- history 객체
+
+| 메소드 | 설명 |
+|:----:|:----:|
+| forward() | 앞으로 이동 |
+| back() | 뒤로 이동 |
+
+- navigator 객체
+-- 실행하는 브라우저 정보 <br>
+-- 사용자의 웹 브라우저, 운영체제 구분 <br>
+
+| 속성 | 설명 |
+|:----:|:----:|
+| appCodeName | 웹 브라우저 코드 이름 |
+| appName | 웹 브라우저 코드 이름 |
+| appVersion | 웹 브라우저 버전 |
+| platform | 사용 중인 운영체제의 시스템 환경 |
+| userAgent | 웹 브라우저 전체적 정보 |
+
+- 문서 객체 모델
+-- 넓은 의미 : 웹 브라우저 HTML 페이지를 인식하는 방법 <br>
+-- 좁은 의미 : document 객체와 관련된 객체 집합 <br>
+
+- 문서 객체 : HTML 태크를 자바스크립트에 사용 할 수 있는 객체
+- 노드 : 각 요소
+-- 요소 노드 : h1 태그와 script 태그처럼 요소를 생성하는 노드 <br>
+-- 텍스트 노드 : 화면에 출력되는 문자열 <br>
+
+- 정적 생성 : 처음 실행할 때 HTML 페이지에 있는 태그를 읽으면서 생성
+- 동적 생성 : 자바스크립트를 사용해 프로그램 실행 중 생성 <br>
+
+- 문자 객체 조작 순서 - script 태그 아래 삽입 -> HTML 페이지 규모가 클 때 유지 보수 어려움 -> 이벤트 기능 사용
+- 문서 객체 선택 : HTML -> (자바스크립트에서) 문서 객체
+
+- 1개의 문서 객체 선택
+
+| 메소드 | 설명 |
+|:----:|:----:|
+| document.getElementById(아이디) | 아이디를 사용해 문서 객체 선택 |
+| document.querySelector(선택자) | 선택자를 사용해 문서 객체 선택 |
+->(2번째 메소드) 매개 변수로 전달한 CSS 선택자로 선택되는 첫 번째 태그만 선택
+
+- 여러 개의 문서 객체 선택
+
+| 메소드 | 설명 |
+|:----:|:----:|
+| document.getElementByName(이름) | name 속성으로 여러 개의 문서 객체 선택 |
+| document.getElementsByClassName(클래스) | class 속성으로 여러 개의 문서 객체 선택 |
+| document.querySelectAll(선택자) | 선택자로 여러 개의 문서 객체 선택 |
+
+- 문자 조작
+innerHTML : 문서 객체 내부의 글자를 나타냄
+- 스타일 조작
+
+| 자바스크립트의 스타일 속성 |
+|:----:|
+| backgroundColor |
+| borderRedius |
+| borderBottom |
+
+- 속성 조작
+
+| 메소드 | 설명 |
+|:----:|:----:|
+| setAttribute(속성 이름, 속성 값) | 속성 지정 |
+| getAttribute(속성 이름) | 속성 추출 |
+-> 웹 표준에서 지원하지 않는 속성을 지정할 때
+
+- 이벤트
+```javascript
+window.onload = function () { };
+```
+- 이벤트 속성 : onload
+- 이벤트 이름, 이벤트 타입 : load 
+- 이벤트 리스너, 이벤트 핸들러 : 이벤트 속성에 넣는 함수
+- 이벤트 모델 : 문서 객체에 이벤트를 연결하는 방법 <br>
+
+- 인라인 이벤트 모델 <br>
+-- HTML 태그에서 on 문자열로 시작하는 속성을 이벤트와 관련 <br>
+-- script 태그 내부에 있는 함수 호출<br>
+
+- 고전 이벤트 모델
+```javascript
+var image = document.getElementById('image');
+image.width = 100;
+image.height = 100;
+```
+- 이벤트 객체 <br>
+-- 익스플로러 : window 객체의 event 속성이 이벤트 객체 <br>
+- 기본 이벤트 제거 <br>
+-- return fasle; 리턴 <br>
+-- a,form 태그에 자주 사용 <br>
+
+- jQuery 사용 방법 : 파일 다운, cdn 사용
+- $(<매개 변수>).메소드(<매개 변수>, <매개 변수>)
+```javascript
+window.jQuery = window.$ = jQuery;
+```
+- 객체 생성
+```javascript
+// 일반 문서 객체로 jQuery 객체 생성
+$(document)
+
+// CSS 선택자로 
+$('h1')
+
+// HTML 문자열로
+$('<h1></h1>')
+```
+- 객체 탐색
+
+| 메소드 | 설명 |
+|:----:|:----:|
+| parent() | 부모 태그 선택 |
+| find() | 후손 태그 찾음 |
+
+- 선택된 문서 객체의 수 : length
+- 선택된 문서 객체 추출 : get() (객체 중 하나 선택)
+- each() : 선택한 문서 객체에 반복을 적용
+-> forEach() 메소드와 인덱스, 요소 순서가 다름 <br>
+
+| Array 객체의 forEach() 메소드 | jQuery의 each() 메소드 |
+|:----:|:----:|
+| [].forEach(function (item, index) { }); | $('h1').each(function (index, item) { }); |
+
+- 문자 조작
+- text() : html 태그 내부의 문자 조작 -> 여러 개 문서 객체 선택할 때 모든 문서 객체 내부의 문자를 출력
+- html() : html 태그 내부의 문자 조작 (HTML태그 인식) -> 첫 번째 문서 객체 내부의 문자를 출력 <br>
+- css() : 스타일 조작
+- attr() : 속성을 조작
+
+- 문서 객체 추가
+
+| 메소드 | 설명 |
+|:----:|:----:|
+| $((A).prependTo(<B>)) | A를 B 안쪽 앞에 추가 |
+| $((A).appendTo(<B>)) | A를 B 안쪽 뒤에 추가 |
+| $((A).insertBefore(<B>)) | A를 B 앞에 추가 |
+| $((A).insertAfter(<B>)) | A를 B 뒤에 추가 |
+
+- jQuery 이벤트 메소드
+
+| 메소드 | 설명 |
+|:----:|:----:|
+| on() | 이벤트 연결 |
+| off() | 이벤트 제거 |
+
+- 이벤트 직접 연결
+```javascript
+$(<선택자>).on(<이벤트 이름>, <콜백 함수>)
+```
+| 메소드 | 설명 |
+|:----:|:----:|
+| keydown() | 키보드 키 눌렀을 때 |
+| keypress() | 키가 입력되었을 때 |
+| keyup() | 키보드 키 떼었을 때 |
+| click() | 마우스 클릭했을 때 |
+| dbclick() | 마우스 더블 클릭했을 때 |
+| mousedown() | 마우스 버튼 눌렀을 때 |
+| mouseenter() | 마우스 커서가 해당 태그로 들어갔을 때 |
+| mouseleave() | 마우스 커서가 해당 태그에서 나갔을 때 |
+| mousemove() | 마우스 움직일 때 |
+| mouseup() | 마우스 버튼 땔 때 |
+| blur() | 입력 양식 값 입력 종료할 때 |
+| change() | 입력 양식의 값 변경될 때 |
+| focus() | 입력 양식에 값 입력 시작할 때 |
+| select() | type 속성이 select인 입력 양식의 목록에서 값을 선택했을 때 |
+| submit() | type 속성이 submit인 입력 양식을 클릭했을 때 |
+| resize() | 브라우저 크기변경 |
+| scroll() | 브라우저 스크롤 |
+
+- 이벤트 간접 연결 : 부모에게 이벤트를 위임해 부모가 이벤트를 처리
+- 이벤트 제거 : off() 메소드 사용
+- one() : 이벤트를 한번만 연결하는 메소드
+- animate() : 애니메이션 메소드 -> 스타일에 적용
+```javascript
+$(<선택자>).animate(<속성>, <시간>, <콜백 함수>)
+```
+-> 콜백 함수는 애니메이션이 종료후 호출, 생략 가능
+***
 ## [5월 25일]
 ***
 ## 내용 요약
